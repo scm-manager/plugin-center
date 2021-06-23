@@ -21,11 +21,17 @@ node('docker') {
         version = "${new Date().format('yyyyMMddHHmm')}-${commitHashShort}".trim()
       }
 
-      stage('Apply Cache') {
-        sh 'rm -rf public .cache website.tar.gz || true'
-        googleStorageDownload bucketUri: 'gs://scm-manager/cache/website.tar.gz', credentialsId: 'ces-demo-instances', localDirectory: '.'
-        sh 'tar xfz cache/website.tar.gz'
-        sh 'rm -rf cache'
+      if (env.BRANCH_NAME == 'master') {
+        stage('Apply Cache') {
+          sh 'rm -rf public .cache website.tar.gz || true'
+          googleStorageDownload bucketUri: 'gs://scm-manager/cache/website.tar.gz', credentialsId: 'ces-demo-instances', localDirectory: '.'
+          sh 'tar xfz cache/website.tar.gz'
+          sh 'rm -rf cache'
+        }
+      } else {
+        stage('Invalidate cache') {
+          sh 'rm -rf public .cache website.tar.gz || true'
+        }
       }
 
       stage('Dependencies') {
