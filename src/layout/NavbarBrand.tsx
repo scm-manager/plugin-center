@@ -8,7 +8,7 @@ const NavbarBrand = (props: NavbarProps) => {
   const data = useStaticQuery(graphql`{
   file(relativePath: {eq: "images/scm-manager_logo.png"}) {
     childImageSharp {
-      gatsbyImageData(width: 327, height: 80, layout: FIXED)
+      gatsbyImageData(width: 327, height: 80, layout: FIXED, placeholder: BLURRED)
     }
   }
 }

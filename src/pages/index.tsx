@@ -27,7 +27,7 @@ const IndexPage = () => {
   const data = useStaticQuery(graphql`{
   file(relativePath: {eq: "images/scm-manager_logo.png"}) {
     childImageSharp {
-      gatsbyImageData(width: 256, layout: CONSTRAINED)
+      gatsbyImageData(width: 256, layout: CONSTRAINED, placeholder: BLURRED)
     }
   }
 }

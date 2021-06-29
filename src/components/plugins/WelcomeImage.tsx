@@ -7,7 +7,7 @@ export default function() {
     {
       file(relativePath: { eq: "images/hero-image.png" }) {
         childImageSharp {
-          gatsbyImageData(width: 720, layout: CONSTRAINED)
+          gatsbyImageData(width: 720, layout: CONSTRAINED, placeholder: BLURRED)
         }
       }
     }

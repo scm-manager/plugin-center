@@ -18,7 +18,7 @@ const Image = () => {
     {
       placeholderImage: file(relativePath: { eq: "scm-manager_logo_img.png" }) {
         childImageSharp {
-          gatsbyImageData(width: 300, layout: CONSTRAINED)
+          gatsbyImageData(width: 300, layout: CONSTRAINED, placeholder: BLURRED)
         }
       }
     }
